@@ -150,47 +150,47 @@ void Polinom::print() const
 #include <iostream>
 #include <queue>
 
-
 int main()
 {
     std::queue<int> Q1, Q2;
-    for(int i = 10; i > 0; --i)
+    
+    for(int i = 1; i < 10; i += 2)
     {
         Q1.push(i);
+        std::cout << Q1.back() << " ";
+    }
+    for(int i = 0; i< 10; i += 2)
+    {
+        Q1.push(i);
+        std::cout <<Q1.back() << " ";
     }
     
-    int* a = new int [Q1.size()];
-    int i = 0, k = Q1.size();
+    std::cout << std::endl;
+    
     while(!Q1.empty())
     {
-        a[i] = Q1.front();
-        Q1.pop();
-        ++i;
-    }
-    
-    for(int i = 0; i < k; ++i)
-    {
-        for(int j = i + 1; j < k; ++j)
+        if(Q2.front() && Q2.front() < Q1.front())
         {
-            if(a[i] > a[j])
-            {
-                int tmp = a[i];
-                a[i] = a[j];
-                a[j] = tmp;
-            }
+            Q2.push(Q1.front());
         }
+        else if(Q2.front() && Q2.front() > Q1.front())
+        {
+            int k = Q2.front();
+            Q2.pop();
+            Q2.push(Q1.front());
+            Q2.push(k);
+        }
+        else
+        {
+            Q2.push(Q1.front());
+        }
+        Q1.pop();
     }
-    for(int i = 0; i < k; ++i)
-    {
-        Q2.push(a[i]);
-    }
-    
     while(!Q2.empty())
     {
         std::cout << Q2.front() << " ";
         Q2.pop();
     }
-    std::cout << std::endl;
     
     return 0;
 }
