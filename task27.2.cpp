@@ -24,19 +24,18 @@ public:
     ~String();
     
 public:
-    int find(const char&) const;
-    int find_from_right(const char&) const; 
-    int count_of_words() const;
-    DoubleNode* finde_substr(const String&) const; 
-    int count_of_longest_words() const; 
+    
+    int find_from_right(const char&) const; //27//
+    DoubleNode* finde_substr(const String&) const; //2//
+    int count_of_longest_words() const; //27//
     void print() const;
     
-    void add_simbol(const char&);
-    void delete_symbol(const char&); 
-    void clear();
+    void add_simbol(const char&); //27 //
+    void delete_symbol(const char&); //2//
+    void clear();//bolori mej //
     
-    String& operator=(const String&); 
-    String operator+(const String&) const;
+    String& operator=(const String&); //bolori mej//
+    String operator+(const String&) const;//2 //
     
 private:
     DoubleNode* m_head;
